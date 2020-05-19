@@ -6,7 +6,7 @@
 | Task | Story Points | Progress |
 | --- | :---: | :---: |
 | Create Classes | 1 | Done |
-| Implement CRUD Method for Survey | 2 | TODO |
+| Implement CRUD Method for Survey | 2 | Done |
 | Implement CRUD Methods for SurveyResponse | 2 | TODO |
 | Implement Calculations Methods on Survey Answers | 2 | TODO |
 | Add Test Coverage Metric to Project | 3 | TODO |
