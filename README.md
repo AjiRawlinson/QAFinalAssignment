@@ -5,7 +5,7 @@
 
 | Task | Story Points | Progress |
 | --- | :---: | :---: |
-| Create Classes | 1 | TODO|
+| Create Classes | 1 | Done |
 | Implement CRUD Method for Survey | 2 | TODO |
 | Implement CRUD Methods for SurveyResponse | 2 | TODO |
 | Implement Calculations Methods on Survey Answers | 2 | TODO |
