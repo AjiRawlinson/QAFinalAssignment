@@ -4,22 +4,32 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    public void createSurvey() {
-        //TODO
+    ArrayList<Survey> surveys;
+
+    public Controller() {
+        this.surveys = new ArrayList<>();
     }
 
-    public void addQuestionToSurvey() {
-        //TODO
+    public Survey createSurvey(String name) {
+        Survey survey = new Survey(name);
+        surveys.add(survey);
+        return survey;
+    }
 
+    public void addQuestionToSurvey(String questionText, Survey survey) {
+        survey.addQuestion(questionText);
     }
 
     public ArrayList<Survey> getAllSurveys() {
-        //TODO
-        return null;
+        return surveys;
     }
 
     public Survey getSurveyByName(String name) {
-        //TODO
+        for(Survey s: surveys) {
+            if(s.getName().equalsIgnoreCase(name)) {
+                return s;
+            }
+        }
         return null;
     }
 
@@ -31,7 +41,7 @@ public class Controller {
         //TODO
     }
 
-    public void getAllresponsesForSurvey(Survey survey) {
+    public void getAllResponsesForSurvey(Survey survey) {
         //TODO
     }
 
@@ -75,6 +85,36 @@ public class Controller {
         return 0;        
     }
 
+    //********************Mocked Data********************
+    public void generateMockedData() {
+        Survey s1 = new Survey("Survey 1");
+        Survey s2 = new Survey("Survey 2");
+        Survey s3 = new Survey("Survey 3");
     
+        s1.addQuestion("This is the 1st Question of Survey 1");
+        s1.addQuestion("This is the 2nd Question of Survey 1");
+        s1.addQuestion("This is the 3rd Question of Survey 1");
+        s1.addQuestion("This is the 4th Question of Survey 1");
+        s1.addQuestion("This is the 5th Question of Survey 1");
+        s1.addQuestion("This is the 6th Question of Survey 1");
+
+        s2.addQuestion("This is the 1st Question of Survey 2");
+        s2.addQuestion("This is the 2nd Question of Survey 2");
+        s2.addQuestion("This is the 3rd Question of Survey 2");
+        s2.addQuestion("This is the 4th Question of Survey 2");
+        s2.addQuestion("This is the 5th Question of Survey 2");
+        s2.addQuestion("This is the 5th Question of Survey 2");
+
+        s3.addQuestion("This is the 1st Question of Survey 3");
+        s3.addQuestion("This is the 2nd Question of Survey 3");
+        s3.addQuestion("This is the 3rd Question of Survey 3");
+        s3.addQuestion("This is the 4th Question of Survey 3");
+        s3.addQuestion("This is the 5th Question of Survey 3");
+        s3.addQuestion("This is the 6th Question of Survey 3");
+
+        surveys.add(s1);
+        surveys.add(s2);
+        surveys.add(s3);
+    }
 
 }
