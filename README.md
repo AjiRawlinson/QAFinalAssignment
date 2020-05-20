@@ -41,3 +41,16 @@ Each Commit would include a discription of what changes it has made to the proje
 https://github.com/AjiRawlinson/QAFinalAssignment/commit/dbc17afaf8e21e53fe8ff0c0d43b25e6ee3e1b3d
 
 ## Code Review Checklist
+
+Below I made a checklist that should be checked for anyone reviewing my code or any code for that matter. If all these 8 points are checked then the reviewer can can give the all clear.
+
+| Review Checklist | :heavy_check_mark: |
+| --- | --- |
+| Implements Task Requirements |  |
+| All tests passing |    |
+| All Methods Tested |   |
+| Variable Names Accurate |   |
+| Efficient Functionality |   |
+| Functionality Exception Handling |   |
+| Adequate Commenting |   |
+| Code Indentation and Formatting |   |
