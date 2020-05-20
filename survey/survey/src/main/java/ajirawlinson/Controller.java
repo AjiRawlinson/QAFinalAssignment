@@ -5,9 +5,12 @@ import java.util.ArrayList;
 public class Controller {
 
     ArrayList<Survey> surveys;
+    ArrayList<SurveyResponse> responses;
+    
 
     public Controller() {
         this.surveys = new ArrayList<>();
+        this.responses = new ArrayList<>();
     }
 
     public Survey createSurvey(String name) {
@@ -33,16 +36,23 @@ public class Controller {
         return null;
     }
 
-    public void createSurveyResponse() {
-        //TODO
+    public SurveyResponse createSurveyResponse(Survey survey) {
+        SurveyResponse response = survey.generateResponse();
+        return response;
     }
 
-    public void addSurveyResponseAnswer() {
-        //TODO
+    public void addSurveyResponseAnswer(SurveyResponse response, int questionIndex, int answerValue) {
+        response.addAnswer(answerValue, questionIndex);
     }
 
-    public void getAllResponsesForSurvey(Survey survey) {
-        //TODO
+    public ArrayList<SurveyResponse> getAllResponsesForSurvey(Survey survey) {
+        return survey.getAllResponses();
+    }
+
+    public ArrayList<Integer> getAllResponsesForSurveyQuestion(Survey survey, int index) {
+        ArrayList<Integer> results = new ArrayList<>();
+        results = survey.getAllResponsesForQuestionByIndex(index);
+        return results;
     }
 
     public double getSurveyAverage(Survey survey) {
@@ -115,6 +125,22 @@ public class Controller {
         surveys.add(s1);
         surveys.add(s2);
         surveys.add(s3);
+
+        SurveyResponse r1 = s1.generateResponse();
+        SurveyResponse r2 = s1.generateResponse();
+        SurveyResponse r3 = s1.generateResponse();
+        SurveyResponse r4 = s1.generateResponse();
+        SurveyResponse r5 = s1.generateResponse();
+        SurveyResponse r6 = s1.generateResponse();
+        SurveyResponse r7 = s1.generateResponse();
+
+        r1.addAnswer(4, 0); r1.addAnswer(3, 1); r1.addAnswer(1, 2); r1.addAnswer(1, 3); r1.addAnswer(3, 4); 
+        r2.addAnswer(2, 0); r2.addAnswer(3, 1); r2.addAnswer(4, 2); r2.addAnswer(1, 3); r2.addAnswer(4, 4); 
+        r3.addAnswer(1, 0); r3.addAnswer(3, 1); r3.addAnswer(4, 2); r3.addAnswer(1, 3); r3.addAnswer(5, 4); 
+        r4.addAnswer(5, 0); r4.addAnswer(5, 1); r4.addAnswer(2, 2); r4.addAnswer(3, 3); r4.addAnswer(5, 4); 
+        r5.addAnswer(2, 0); r5.addAnswer(4, 1); r5.addAnswer(3, 2); r5.addAnswer(2, 3); r5.addAnswer(3, 4); 
+        r6.addAnswer(3, 0); r6.addAnswer(2, 1); r6.addAnswer(2, 2); r6.addAnswer(2, 3); r6.addAnswer(4, 4); 
+        r7.addAnswer(2, 0); r7.addAnswer(2, 1); r7.addAnswer(3, 2); r7.addAnswer(3, 3); r7.addAnswer(5, 4); 
     }
 
 }
