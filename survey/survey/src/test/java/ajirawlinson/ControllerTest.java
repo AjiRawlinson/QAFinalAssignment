@@ -220,6 +220,9 @@ public class ControllerTest {
 
     //#####################Survey Method Tests#####################
 
+    //************************Get Average Result for Survey************************
+
+
     @Test
     public void getAverageForSurveyTest() {
         controller = new Controller();
@@ -238,6 +241,8 @@ public class ControllerTest {
         assertEquals(0.0, average, 0.01);
     }
 
+    //************************Get Standard Diviation Result for Survey************************
+
     @Test
     public void getStdDeviationForSurveyTest() {
         controller = new Controller();
@@ -255,6 +260,9 @@ public class ControllerTest {
         double stdDeviation = controller.getSurveyStdDeviation(survey);
         assertEquals(0, stdDeviation, 0.01);
     }
+
+    //************************Get Min value for Survey Resonse************************
+
 
     @Test
     public void getMinValueForSurveyTest() {
@@ -276,6 +284,9 @@ public class ControllerTest {
         assertEquals(0, minValue);
     }
 
+    //************************Get Max value for Survey Resonse************************
+
+
     @Test
     public void getMaxValueForSurveyTest() {
         controller = new Controller();
@@ -296,6 +307,8 @@ public class ControllerTest {
         assertEquals(0, maxValue);
     }
 
+    //************************Get Average Result for Survey Question************************
+
     @Test
     public void getAverageForSurveyQuestionTest() {
         controller = new Controller();
@@ -313,6 +326,8 @@ public class ControllerTest {
         double average = controller.getSurveyQuestionAverage(survey, 0);
         assertEquals(0, average, 0.01);
     }
+
+    //************************Get Standard Deviation Result for Survey Question************************
 
     @Test
     public void getStdDeviationForSurveyQuestionTest() {
@@ -332,6 +347,7 @@ public class ControllerTest {
         assertEquals(0, stdDeviation, 0.01);
     }
 
+    //************************Get Min value for Survey Question************************
 
     @Test
     public void getMinValueForSurveyQuestionTest() {
@@ -352,6 +368,8 @@ public class ControllerTest {
 
         assertEquals(0, minValue);
     }
+
+    //************************Get MAx value for Survey Question************************
 
     @Test
     public void getMaxValueForSurveyQuestionTest() {
