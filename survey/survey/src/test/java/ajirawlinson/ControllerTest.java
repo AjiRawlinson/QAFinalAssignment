@@ -119,11 +119,22 @@ public class ControllerTest {
     //************************Get Survey Response************************
 
     @Test
-    public void createResponseTest() {
+    public void createResponseForSurveyWithQuestionsTest() {
+        controller = new Controller();
+        Survey survey = controller.createSurvey("Survey Name");
+        controller.addQuestionToSurvey("Question 1", survey);
+        controller.addQuestionToSurvey("Question 2", survey);
+        controller.addQuestionToSurvey("Question 3", survey);
+        SurveyResponse response = controller.createSurveyResponse(survey);
+        assertNotEquals(null, response);
+    }
+
+    @Test
+    public void createResponseForSurveyWithNoQuestionsNoTest() {
         controller = new Controller();
         Survey survey = controller.createSurvey("Survey Name");
         SurveyResponse response = controller.createSurveyResponse(survey);
-        assertNotEquals(null, response);
+        assertEquals(null, response);
     }
 
     //************************Response Answer Questions************************
@@ -160,7 +171,7 @@ public class ControllerTest {
         survey.addQuestion("Question 1: ");
         SurveyResponse response = controller.createSurveyResponse(survey);
         controller.addSurveyResponseAnswer(response, 0, 7);
-        assertEquals(-1, response.getAswersByIndex(0));
+        assertEquals(0, response.getAswersByIndex(0));
     }
 
     //************************Get Response Answers************************
@@ -207,12 +218,160 @@ public class ControllerTest {
         assertEquals(0, results.size());
     }
 
-
-
-
-
     //#####################Survey Method Tests#####################
 
+    @Test
+    public void getAverageForSurveyTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");//4+3+1+1+3+2+3+4+1+4+1+3+4+1+5+5+5+2+3+5+2+4+3+2+3+3+2+2+2+4+2+2+3+3+5 = 102
+        double average = controller.getSurveyAverage(survey);//102 / 35 = 2.91
+        assertEquals(2.91, average, 0.01);
+    }
+
+    @Test 
+    public void getAverageForSurveyNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        double average = controller.getSurveyAverage(survey);
+        assertEquals(0.0, average, 0.01);
+    }
+
+    @Test
+    public void getStdDeviationForSurveyTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");
+        double stdDeviation = controller.getSurveyStdDeviation(survey);//stdDeviation of macked dresponses for Survey 1 = 1.25
+        assertEquals(1.25, stdDeviation, 0.01);
+    }
+
+    @Test
+    public void getStdDeviationForSurveyWithNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        double stdDeviation = controller.getSurveyStdDeviation(survey);
+        assertEquals(0, stdDeviation, 0.01);
+    }
+
+    @Test
+    public void getMinValueForSurveyTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");
+        int minValue = controller.getSurveyMinimumScore(survey);
+
+        assertEquals(1, minValue);
+    }
+
+    @Test
+    public void getMinValueForSurveyWithNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        int minValue = controller.getSurveyMinimumScore(survey);
+
+        assertEquals(0, minValue);
+    }
+
+    @Test
+    public void getMaxValueForSurveyTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");
+        int maxValue = controller.getSurveyMaximumScore(survey);
+
+        assertEquals(5, maxValue);
+    }
+
+    @Test
+    public void getMaxValueForSurveyWithNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        int maxValue = controller.getSurveyMaximumScore(survey);
+
+        assertEquals(0, maxValue);
+    }
+
+    @Test
+    public void getAverageForSurveyQuestionTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");//4+2+1+5+2+3+2 = 19
+        double average = controller.getSurveyQuestionAverage(survey, 0);//19 / 7 = 2.71
+        assertEquals(2.71, average, 0.01);
+    }
+
+    @Test 
+    public void getAverageForSurveyQuestionNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        double average = controller.getSurveyQuestionAverage(survey, 0);
+        assertEquals(0, average, 0.01);
+    }
+
+    @Test
+    public void getStdDeviationForSurveyQuestionTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");
+        double stdDeviation = controller.getSurveyQuestionStdDeviation(survey, 0);//stdDeviation of macked dresponses for Survey 1, Question 1 is = 1.28
+        assertEquals(1.28, stdDeviation, 0.01);
+    }
+
+    @Test
+    public void getStdDeviationForSurveyQuestionWithNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        double stdDeviation = controller.getSurveyQuestionStdDeviation(survey, 0);
+        assertEquals(0, stdDeviation, 0.01);
+    }
+
+
+    @Test
+    public void getMinValueForSurveyQuestionTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");
+        int minValue = controller.getSurveyQuestionMinimumScore(survey, 4);//min value for mocked Surveu1 question 5 = 3
+
+        assertEquals(3, minValue);
+    }
+
+    @Test
+    public void getMinValueForSurveyQuestionWithNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        int minValue = controller.getSurveyQuestionMinimumScore(survey, 4);
+
+        assertEquals(0, minValue);
+    }
+
+    @Test
+    public void getMaxValueForSurveyQuestionTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 1");
+        int maxValue = controller.getSurveyQuestionMaximumScore(survey, 3);//min value for mocked Surveu1 question 4 = 3
+
+        assertEquals(3, maxValue);
+    }
+
+    @Test
+    public void getMaxValueForSurveyQuestionWithNoResponsesTest() {
+        controller = new Controller();
+        controller.generateMockedData();
+        Survey survey = controller.getSurveyByName("Survey 2");
+        int maxValue = controller.getSurveyQuestionMaximumScore(survey, 3);
+
+        assertEquals(0, maxValue);
+    }
 
 
     

@@ -11,7 +11,7 @@ public class SurveyResponse {
     public SurveyResponse(int numOfQuestions) {
         // this.survey = survey;
         this.answers = new ArrayList<>();
-        for(int i = 0; i < numOfQuestions; i++) { answers.add(-1); }
+        for(int i = 0; i < numOfQuestions; i++) { answers.add(0); }
     }
 
     public void addAnswer(int answer, int index) {
