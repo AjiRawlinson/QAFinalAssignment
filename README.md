@@ -10,8 +10,8 @@
 | Implement CRUD Methods for SurveyResponse | 2 | Done |
 | Implement Calculations Methods on Survey Answers | 2 | Done |
 | Add Test Coverage Metric to Project | 3 | Done |
-| Add Team Version Control to Project | 1 | TODO |
-| Add Review Checklist to Project | 1 | TODO |
+| Add Team Version Control to Project | 1 | Done |
+| Add Review Checklist to Project | 1 | Done |
 | **Total Story Points for Sprint** | **12** |    |
 
 ### Task Estimation
