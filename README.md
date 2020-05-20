@@ -7,7 +7,7 @@
 | --- | :---: | :---: |
 | Create Classes | 1 | Done |
 | Implement CRUD Method for Survey | 2 | Done |
-| Implement CRUD Methods for SurveyResponse | 2 | TODO |
+| Implement CRUD Methods for SurveyResponse | 2 | Done |
 | Implement Calculations Methods on Survey Answers | 2 | TODO |
 | Add Test Coverage Metric to Project | 3 | TODO |
 | Add Team Version Control to Project | 1 | TODO |

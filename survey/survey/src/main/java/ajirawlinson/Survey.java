@@ -7,10 +7,12 @@ public class Survey {
     private String name;
     private final int QUESTIONS_LIMIT = 10;
     private ArrayList<Question> questions;
+    private ArrayList<SurveyResponse> responses;
 
     public Survey(String name) {
         this.name = name;
         this.questions = new ArrayList<>();
+        this.responses = new ArrayList<>();
     }
 
     public void setName(String name){
@@ -34,5 +36,32 @@ public class Survey {
 
     public Question getQuestionByIndex(int index) {
         return questions.get(index);
+    }
+
+    public int getNumberOfQuestions() {
+        return questions.size();
+    }
+
+    public SurveyResponse generateResponse() {
+        if(this.getNumberOfQuestions() > 0 ) {
+            SurveyResponse response = new SurveyResponse(this.getNumberOfQuestions());
+            responses.add(response);
+            return response;
+        }
+        return null;
+    }
+
+    public ArrayList<SurveyResponse> getAllResponses() {
+        return responses;
+    }
+
+    public ArrayList<Integer> getAllResponsesForQuestionByIndex(int index) {
+        ArrayList<Integer> resultList = new ArrayList<>();
+        for(SurveyResponse r: responses) {
+            if(r.getAswersByIndex(index) > 0) {
+                resultList.add(r.getAswersByIndex(index));
+            }
+        }
+        return resultList;
     }
 }
