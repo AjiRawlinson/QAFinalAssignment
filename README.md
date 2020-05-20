@@ -26,9 +26,9 @@ Test Coverage is the degree of which a test suite covers the application code. T
 
 The Code Coverage tool I decided to use is called Jacoco, however for one reason or another I could not get it to geneate the Test Coverage reports.
 
-![Jacoco Failure](images/jacocofailure.jpg)
+![Jacoco Failure](images/jacocofailure.JPG)
 
- So unfortuantly I could not use to generate test coverage, and had to resort to a more primative way to come up with a result, which I got off the this (website)[https://reqtest.com/testing-blog/test-coverage-metrics/].
+ So unfortuantly I could not use to generate test coverage, and had to resort to a more primative way to come up with a result, which I got off the this website: https://reqtest.com/testing-blog/test-coverage-metrics/.
 
 ![Test Coverage Formula](images/testcoverageformula.JPG)
 
